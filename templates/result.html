@@ -2,9 +2,15 @@
 <html>
 <head>
     <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='results_styles.css') }}">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/miloxeon/potion/potion.min.css"> -->
 </head>
 <body>
     <h1>Prediction Result</h1>
     <p>Predicted Death Rate: {{ prediction }}</p>
+    <!-- <button onclick="window.location.href='/'">Refresh</button> -->
+    <form action="{{ url_for('index') }}">
+        <input type="submit" value="Refresh">
+    </form>
 </body>
 </html>

@@ -2,24 +2,66 @@
 <html>
 <head>
     <title>Death Rate Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_notion.css') }}">
 </head>
 <body>
     <h1>Death Rate Prediction</h1>
-    <form action="{{ url_for('predict') }}" method="post">
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required><br>
-
-        <label for="gender">Gender (0 for male, 1 for female):</label>
-        <input type="number" id="gender" name="gender" required><br>
-
-        <label for="race">Race (0 for White, 1 for Black, 2 for Other):</label>
-        <input type="number" id="race" name="race" required><br>
-
-        <label for="hispanic">Hispanic (0 for No, 1 for Yes):</label>
-        <input type="number" id="hispanic" name="hispanic" required><br>
-
-        <label for="year">Year:</label>
+    <!-- {% if prediction %}
+        <p>Predicted Death Rate: {{ prediction }}</p>
+    {% endif %} -->
+    <form method="post" action="{{ url_for('index') }}">
+        <label for="year">Year</label>
         <input type="number" id="year" name="year" required><br>
+
+        <label for="age">Age</label>
+        <select id="age" name="age" required>
+            <option value="0">Under 15</option>
+            <option value="1">15-24</option>
+            <option value="2">25-34</option>
+            <option value="3">35-44</option>
+            <option value="4">45-54</option>
+            <option value="5">55-64</option>
+            <option value="6">65-74</option>
+            <option value="7">75-84</option>
+            <option value="8">85 and over</option>
+            <option value="9">All ages</option>
+        </select><br>
+
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+            <option value="0">Male</option>
+            <option value="1">Female</option>
+            <option value="2">Unknown</option>
+        </select><br>
+
+        <label for="hispanic">Are you Hispanic or Latino?</label>
+        <select id="hispanic" name="hispanic" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br>
+
+        <label for="race">Race</label>
+        <select id="race" name="race" required>
+            <option value="0">Hispanic Latino</option>
+            <option value="1">White</option>
+            <option value="2">Native Black</option>
+            <option value="3">Black American</option>
+            <option value="4">American Indian</option>
+            <option value="5">Asian Pacific Islander</option>
+            <option value="6">Asian</option>
+            <option value="7">Native Hawaiian</option>
+            <option value="8">Unknown</option>
+        </select><br>
+
+        <label for="panel">Panel Type</label>
+        <select id="panel" name="panel" required>
+            <option value="0">All Drug</option>
+            <option value="1">Opioid</option>
+            <option value="2">Heroin</option>
+            <option value="3">Methadone</option>
+            <option value="4">Natural and Semisynthetic Opioids</option>
+            <option value="5">Other Synthetic Opioids</option>
+        </select><br>
 
         <input type="submit" value="Predict">
     </form>
